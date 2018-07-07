@@ -1,0 +1,26 @@
+libanyevent-perl (6.100-1) unstable; urgency=low
+
+  [ INCOMPATIBLE CHANGES ]
+  * the default log level is now "4" (error and above), and some messages inside
+    AnyEvent have been elevated to higher log levels to print by default.
+
+ -- Alessandro Ghedini <al3xbio@gmail.com>  Wed, 05 Oct 2011 16:53:31 +0200
+
+libanyevent-perl (6.010-1) unstable; urgency=low
+
+  [ INCOMPATIBLE CHANGES ]
+  * AnyEvent::DNS resource records now include the TTL as fourth element - this
+    affects ->resolve, ->request and ->dns_unpack indirectly. Convenience
+    functions such as AnyEvent::DNS::{a,txt,mx,srv} are not affected, neither is
+    AnyEvent::Socket.
+  * backend authors now should not implement one_event or loop, but instead the
+    AnyEvent::CondVar::_wait and _poll methods.
+  * verbosity levels have been redefined, see AnyEvent (PERL_ANYEVENT_VERBOSE)
+    and AnyEvent::Log for details.
+
+  [ DEPRECATIONS ]
+  * please change "use AnyEvent::Impl::Perl" to "use AnyEvent::Loop" and
+    "AnyEvent::Impl::Perl::loop" to "AnyEvent::Loop::run" in your programs, for
+    future compatibility.
+
+ -- Alessandro Ghedini <al3xbio@gmail.com>  Fri, 26 Aug 2011 14:41:35 +0200
