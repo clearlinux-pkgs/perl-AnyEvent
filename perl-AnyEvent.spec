@@ -4,7 +4,7 @@
 #
 Name     : perl-AnyEvent
 Version  : 7.15
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.15.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.15.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.140-2.debian.tar.xz
