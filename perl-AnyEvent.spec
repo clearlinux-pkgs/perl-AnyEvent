@@ -4,14 +4,24 @@
 #
 Name     : perl-AnyEvent
 Version  : 7.15
-Release  : 14
+Release  : 15
 URL      : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.15.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.15.tar.gz
-Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.140-2.debian.tar.xz
-Summary  : The DBI of event loop programming
+Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.160-1.debian.tar.xz
+Summary  : unknown
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-AnyEvent-license = %{version}-%{release}
+Requires: perl(EV)
+Requires: perl(Event)
+Requires: perl(Event::Lib)
+Requires: perl(Glib)
+Requires: perl(IO::AIO)
+Requires: perl(IO::Async::Loop)
+Requires: perl(Irssi)
+Requires: perl(Net::SSLeay)
+Requires: perl(POE)
+Requires: perl(Tk)
 BuildRequires : buildreq-cpan
 
 %description
@@ -50,7 +60,7 @@ cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/AnyEvent-7.15/deblicense/
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -63,7 +73,6 @@ fi
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-AnyEvent
 cp COPYING %{buildroot}/usr/share/package-licenses/perl-AnyEvent/COPYING
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-AnyEvent/deblicense_copyright
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -73,6 +82,9 @@ find %{buildroot} -type f -name .packlist -exec rm -f {} ';'
 find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %{_fixperms} %{buildroot}/*
+## Remove excluded files
+rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Cocoa.pm
+rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
 
 %files
 %defattr(-,root,root,-)
@@ -85,7 +97,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/IO.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/IO/IOAIO.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/IO/Perl.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Cocoa.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/EV.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Event.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/EventLib.pm
@@ -120,7 +131,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 /usr/share/man/man3/AnyEvent::IO.3
 /usr/share/man/man3/AnyEvent::IO::IOAIO.3
 /usr/share/man/man3/AnyEvent::IO::Perl.3
-/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
 /usr/share/man/man3/AnyEvent::Impl::EV.3
 /usr/share/man/man3/AnyEvent::Impl::Event.3
 /usr/share/man/man3/AnyEvent::Impl::EventLib.3
@@ -144,4 +154,3 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/perl-AnyEvent/COPYING
-/usr/share/package-licenses/perl-AnyEvent/deblicense_copyright

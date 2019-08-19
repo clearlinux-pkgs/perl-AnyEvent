@@ -1,3 +1,12 @@
+libanyevent-perl (7.150-1) unstable; urgency=medium
+
+  [ INCOMPATIBLE CHANGE]
+  AnyEvent::Handle's tls_detect documentation gave separate major and minor
+  versions, while code passed only a single value. This version follows the
+  documentation and now passes separate major and minor values.
+
+ -- gregor herrmann <gregoa@debian.org>  Fri, 19 Jul 2019 12:16:42 -0300
+
 libanyevent-perl (6.100-1) unstable; urgency=low
 
   [ INCOMPATIBLE CHANGES ]
