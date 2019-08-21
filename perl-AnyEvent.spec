@@ -4,7 +4,7 @@
 #
 Name     : perl-AnyEvent
 Version  : 7.16
-Release  : 16
+Release  : 17
 URL      : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.16.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.16.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.160-1.debian.tar.xz
@@ -12,6 +12,7 @@ Summary  : unknown
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
 Requires: perl-AnyEvent-license = %{version}-%{release}
+Requires: perl(AnyEvent::AIO)
 Requires: perl(EV)
 Requires: perl(Event)
 Requires: perl(Event::Lib)
@@ -85,6 +86,12 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 ## Remove excluded files
 rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Cocoa.pm
 rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
+rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/FLTK.pm
+rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::FLTK.3
+rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Qt.pm
+rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Qt.3
+rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/UV.pm
+rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::UV.3
 
 %files
 %defattr(-,root,root,-)
@@ -100,15 +107,12 @@ rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/EV.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Event.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/EventLib.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/FLTK.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Glib.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/IOAsync.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Irssi.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/POE.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Perl.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Qt.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/Tk.pm
-/usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Impl/UV.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Intro.pod
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Log.pm
 /usr/lib/perl5/vendor_perl/5.28.2/x86_64-linux-thread-multi/AnyEvent/Loop.pm
@@ -134,15 +138,12 @@ rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
 /usr/share/man/man3/AnyEvent::Impl::EV.3
 /usr/share/man/man3/AnyEvent::Impl::Event.3
 /usr/share/man/man3/AnyEvent::Impl::EventLib.3
-/usr/share/man/man3/AnyEvent::Impl::FLTK.3
 /usr/share/man/man3/AnyEvent::Impl::Glib.3
 /usr/share/man/man3/AnyEvent::Impl::IOAsync.3
 /usr/share/man/man3/AnyEvent::Impl::Irssi.3
 /usr/share/man/man3/AnyEvent::Impl::POE.3
 /usr/share/man/man3/AnyEvent::Impl::Perl.3
-/usr/share/man/man3/AnyEvent::Impl::Qt.3
 /usr/share/man/man3/AnyEvent::Impl::Tk.3
-/usr/share/man/man3/AnyEvent::Impl::UV.3
 /usr/share/man/man3/AnyEvent::Intro.3
 /usr/share/man/man3/AnyEvent::Log.3
 /usr/share/man/man3/AnyEvent::Loop.3

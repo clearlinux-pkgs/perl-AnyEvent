@@ -2,3 +2,9 @@
 # names, one per line.
 /usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Cocoa.pm
 /usr/share/man/man3/AnyEvent::Impl::Cocoa.3
+/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/FLTK.pm
+/usr/share/man/man3/AnyEvent::Impl::FLTK.3
+/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Qt.pm
+/usr/share/man/man3/AnyEvent::Impl::Qt.3
+/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/UV.pm
+/usr/share/man/man3/AnyEvent::Impl::UV.3
