@@ -4,7 +4,7 @@
 #
 Name     : perl-AnyEvent
 Version  : 7.17
-Release  : 18
+Release  : 19
 URL      : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.160-1.debian.tar.xz
@@ -22,7 +22,6 @@ Requires: perl(IO::Async::Loop)
 Requires: perl(Irssi)
 Requires: perl(Net::SSLeay)
 Requires: perl(POE)
-Requires: perl(Tk)
 BuildRequires : buildreq-cpan
 
 %description
@@ -74,8 +73,8 @@ fi
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-AnyEvent
-cp COPYING %{buildroot}/usr/share/package-licenses/perl-AnyEvent/COPYING
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-AnyEvent/deblicense_copyright
+cp %{_builddir}/AnyEvent-7.17/COPYING %{buildroot}/usr/share/package-licenses/perl-AnyEvent/9a56f3b919dfc8fced3803e165a2e38de62646e5
+cp %{_builddir}/AnyEvent-7.17/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-AnyEvent/643122edf553f9ad5a37635cc1d282ff23559bd8
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -156,5 +155,5 @@ rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::UV.3
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-AnyEvent/COPYING
-/usr/share/package-licenses/perl-AnyEvent/deblicense_copyright
+/usr/share/package-licenses/perl-AnyEvent/643122edf553f9ad5a37635cc1d282ff23559bd8
+/usr/share/package-licenses/perl-AnyEvent/9a56f3b919dfc8fced3803e165a2e38de62646e5
