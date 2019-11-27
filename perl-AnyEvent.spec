@@ -4,7 +4,7 @@
 #
 Name     : perl-AnyEvent
 Version  : 7.17
-Release  : 21
+Release  : 22
 URL      : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.160-1.debian.tar.xz
@@ -14,15 +14,8 @@ License  : Artistic-1.0 GPL-1.0
 Requires: perl-AnyEvent-license = %{version}-%{release}
 Requires: perl-AnyEvent-perl = %{version}-%{release}
 Requires: perl(AnyEvent::AIO)
-Requires: perl(EV)
-Requires: perl(Event)
-Requires: perl(Event::Lib)
-Requires: perl(Glib)
 Requires: perl(IO::AIO)
-Requires: perl(IO::Async::Loop)
-Requires: perl(Irssi)
 Requires: perl(Net::SSLeay)
-Requires: perl(POE)
 BuildRequires : buildreq-cpan
 
 %description
