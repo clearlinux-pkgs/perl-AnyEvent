@@ -4,10 +4,9 @@
 #
 Name     : perl-AnyEvent
 Version  : 7.17
-Release  : 32
+Release  : 33
 URL      : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/AnyEvent-7.17.tar.gz
-Source1  : http://http.debian.net/debian/pool/main/liba/libanyevent-perl/libanyevent-perl_7.160-1.debian.tar.xz
 Summary  : unknown
 Group    : Development/Tools
 License  : Artistic-1.0 GPL-1.0
@@ -54,11 +53,7 @@ perl components for the perl-AnyEvent package.
 
 %prep
 %setup -q -n AnyEvent-7.17
-cd %{_builddir}
-tar xf %{_sourcedir}/libanyevent-perl_7.160-1.debian.tar.xz
 cd %{_builddir}/AnyEvent-7.17
-mkdir -p deblicense/
-cp -r %{_builddir}/debian/* %{_builddir}/AnyEvent-7.17/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -77,7 +72,6 @@ fi
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-AnyEvent
 cp %{_builddir}/AnyEvent-7.17/COPYING %{buildroot}/usr/share/package-licenses/perl-AnyEvent/9a56f3b919dfc8fced3803e165a2e38de62646e5
-cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-AnyEvent/643122edf553f9ad5a37635cc1d282ff23559bd8
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -88,14 +82,14 @@ find %{buildroot} -depth -type d -exec rmdir {} 2>/dev/null ';'
 find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 %{_fixperms} %{buildroot}/*
 ## Remove excluded files
-rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Cocoa.pm
-rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
-rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/FLTK.pm
-rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::FLTK.3
-rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Qt.pm
-rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::Qt.3
-rm -f %{buildroot}/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/UV.pm
-rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::UV.3
+rm -f %{buildroot}*/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Cocoa.pm
+rm -f %{buildroot}*/usr/share/man/man3/AnyEvent::Impl::Cocoa.3
+rm -f %{buildroot}*/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/FLTK.pm
+rm -f %{buildroot}*/usr/share/man/man3/AnyEvent::Impl::FLTK.3
+rm -f %{buildroot}*/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/Qt.pm
+rm -f %{buildroot}*/usr/share/man/man3/AnyEvent::Impl::Qt.3
+rm -f %{buildroot}*/usr/lib/perl5/vendor_perl/*/x86_64-linux-thread-multi/AnyEvent/Impl/UV.pm
+rm -f %{buildroot}*/usr/share/man/man3/AnyEvent::Impl::UV.3
 
 %files
 %defattr(-,root,root,-)
@@ -130,36 +124,8 @@ rm -f %{buildroot}/usr/share/man/man3/AnyEvent::Impl::UV.3
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-AnyEvent/643122edf553f9ad5a37635cc1d282ff23559bd8
 /usr/share/package-licenses/perl-AnyEvent/9a56f3b919dfc8fced3803e165a2e38de62646e5
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AE.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/DNS.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Debug.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/FAQ.pod
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Handle.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/IO.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/IO/IOAIO.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/IO/Perl.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/EV.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/Event.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/EventLib.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/Glib.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/IOAsync.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/Irssi.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/POE.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/Perl.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Impl/Tk.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Intro.pod
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Log.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Loop.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Socket.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Strict.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/TLS.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Util.pm
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Util/idna.pl
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/Util/uts46data.pl
-/usr/lib/perl5/vendor_perl/5.34.0/x86_64-linux-thread-multi/AnyEvent/constants.pl
+/usr/lib/perl5/*
